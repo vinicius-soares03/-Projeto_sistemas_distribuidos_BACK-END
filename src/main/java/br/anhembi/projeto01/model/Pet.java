@@ -9,14 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity // indica que esta classe será persistida no BD
 @Table(name = "pets") // nome da tabela no BD para esta entidade
-public class Pet implements Serializable
+public class Pet 
 
 {
-    private static final long serialVersionUID = 1L;
-    @Id // indica que este atributo será chave primária na tabela
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 1, 2, 3, ...
+    @Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
     private long codigo;
 
     @Column(name = "nome", length = 200, nullable = false)
