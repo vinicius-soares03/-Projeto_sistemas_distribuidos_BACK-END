@@ -1,6 +1,6 @@
 package br.anhembi.projeto01.model;
 
-
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,24 +10,27 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity // indica que esta classe será persistida no BD
-@Table(name = "usuario") // nome da tabela no BD para esta entidade
-public class Pet {
+@Table(name = "pets") // nome da tabela no BD para esta entidade
+public class Pet implements Serializable
+
+{
+    private static final long serialVersionUID = 1L;
     @Id // indica que este atributo será chave primária na tabela
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 1, 2, 3, ...
     private long codigo;
 
     @Column(name = "nome", length = 200, nullable = false)
     private String nome;
-    
+
     @Column(name = "raca", length = 100)
     private String raca;
-    
+
     @Column(name = "localizacao", length = 20)
     private String localizacao;
-   
+
     @Column(name = "imagem")
     private String imagem;
-    
+
     @Column(name = "idade", length = 200)
     private int idade;
 
@@ -79,9 +82,4 @@ public class Pet {
         this.imagem = imagem;
     }
 
- 
-
-
-
-    
 }
