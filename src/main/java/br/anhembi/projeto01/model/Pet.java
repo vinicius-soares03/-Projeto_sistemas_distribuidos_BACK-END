@@ -10,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-
+import org.springframework.transaction.annotation.Transactional;
+@Transactional(timeout = 5000000)
 @Entity // indica que esta classe será persistida no BD
 @Table(name = "pets") // nome da tabela no BD para esta entidade
 public class Pet 
